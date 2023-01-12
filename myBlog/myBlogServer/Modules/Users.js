@@ -1,5 +1,4 @@
 const mongoose = require ("./Connection.js");
-
 const {Schema} = mongoose;
 
 const usersSchema = new Schema({

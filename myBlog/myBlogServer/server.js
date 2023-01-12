@@ -73,6 +73,22 @@ app.post("/verify", async (req,res)=>{
     })
 })
 
+app.post("/blog", async (req,res)=>{
+  const newBlog = new blogs({ title:req.body.title, blogText: req.body.blogText, ownerOfBlog:req.body.ownerOfBlog, userId: req.body.userId})
+  await newBlog.save();
+  res.send({message: "new blog saved to database"})
+})
+
+app.get("/blog/:id", async(req,res)=>{
+    const allBlogs = blogs.find({userId: req.params.id})
+    res.send({list: allBlogs})
+})
+
+app.delete("/blog/:id", async (req,res)=>{
+    console.log(req.params.id)
+    await blogs.findOneAndDelete({_id:req.params.id})
+})
+
 
 
 
