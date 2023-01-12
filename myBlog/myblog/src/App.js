@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "./components/Navbar.js"
 import Signup from "./components/SignUp.js"
 import Login from "./components/Login.js"
+import Profile from "./components/Profile.js"
+
 
 function App() {
   return (
@@ -13,7 +15,7 @@ function App() {
        
         <Route exact path="/" element= {<Signup/>}/>
         <Route exact path="/login" element= {<Login/>}/>
-        
+        <Route exact path="/profile" element= {<Profile/>}/>
       </Routes>
      
     </div>

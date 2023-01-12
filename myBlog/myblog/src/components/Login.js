@@ -1,10 +1,32 @@
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+function Login (){
+
+  const [username, setUsername]= useState("") ;
+  const [password, setPassword]= useState("");
+  const navigate = useNavigate();
 
 
-
-function login (){
+ function login1 (){
+    axios
+    .post("http://localhost:3600/login", {username, password})
+    .then(({data})=>{
+      console.log(data)
+      if(data.token ){ // is saved we will go directly to login page so we need to import useNavigate react router dom
+          localStorage.setItem("token", data.token)
+          const aaa = localStorage.getItem("token")
+          console.log("local storage bunu kaydettim:" + aaa)
+          navigate("/profile")// we need to save token our localStorage
+      }else{
+          alert(data.message)
+      }
+    })
+ }
 
 
 
@@ -15,18 +37,18 @@ function login (){
         
       </div>
       <div className="col-6">
-      <Form className="signupform">
-            <Form.Group className="mb-3" controlId="formUsername">
+      <Form className="loginForm">
+            <Form.Group className="mb-3" >
                 <Form.Label>Username</Form.Label>
-                <Form.Control  placeholder="Please enter username"  />
+                <Form.Control  placeholder="Please enter username" onChange={(e)=>{setUsername(e.target.value)}} />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formPassword">
+            <Form.Group className="mb-3" >
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Please enter password" />
+                <Form.Control type="text" placeholder="Please enter password"  onChange={(e)=>{setPassword(e.target.value)}} />
             </Form.Group>
 
-            <Button variant="primary" type="submit">
+            <Button variant="primary"  onClick={ ()=>login1()}>
             Login
             </Button>
             
@@ -40,4 +62,4 @@ function login (){
     )
 }
 
-export default login;
+export default Login;
