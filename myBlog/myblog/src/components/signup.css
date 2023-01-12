@@ -1,0 +1,28 @@
+#signupNote{
+    color: red;
+    font-size: 22px;
+    margin-top:40px;
+ 
+}
+#signupNote {
+    animation: blink-animation 1s steps(5, start) infinite;
+    -webkit-animation: blink-animation 3s steps(3, start) infinite;
+  }
+
+
+  @keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
+  @-webkit-keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
+
+
+.signupform {
+    margin-top: 30px;
+}
+
