@@ -3,7 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "./components/Navbar.js"
 import Signup from "./components/SignUp.js"
 import Login from "./components/Login.js"
-import Profile from "./components/Profile.js"
+import BlogSave from "./components/BlogSave.js"
+import ShowBlogs from "./components/ShowBlogs.js"
+
+
 
 
 function App() {
@@ -15,7 +18,9 @@ function App() {
        
         <Route exact path="/" element= {<Signup/>}/>
         <Route exact path="/login" element= {<Login/>}/>
-        <Route exact path="/profile" element= {<Profile/>}/>
+        <Route exact path="/blogSave" element= {<BlogSave/>}/>
+        <Route exact path="/showBlogs" element= {<ShowBlogs />}/>
+        
       </Routes>
      
     </div>

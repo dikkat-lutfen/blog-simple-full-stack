@@ -14,14 +14,14 @@ function Login (){
 
  function login1 (){
     axios
-    .post("http://localhost:3600/login", {username, password})
+    .post("http://localhost:3600/login/", {username, password})
     .then(({data})=>{
-      console.log(data)
+      console.log(data.token)
       if(data.token ){ // is saved we will go directly to login page so we need to import useNavigate react router dom
           localStorage.setItem("token", data.token)
           const aaa = localStorage.getItem("token")
           console.log("local storage bunu kaydettim:" + aaa)
-          navigate("/profile")// we need to save token our localStorage
+          navigate("/showBlogs")// we need to save token our localStorage
       }else{
           alert(data.message)
       }
