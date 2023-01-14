@@ -21,7 +21,7 @@ function Login (){
           localStorage.setItem("token", data.token)
           const aaa = localStorage.getItem("token")
           console.log("local storage bunu kaydettim:" + aaa)
-          navigate("/showBlogs")// we need to save token our localStorage
+          navigate("/blogSave")// we need to save token our localStorage
       }else{
           alert(data.message)
       }
