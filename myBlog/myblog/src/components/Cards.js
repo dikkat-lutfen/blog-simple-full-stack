@@ -1,6 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import { useState } from 'react';
 import "./Cards.css";
+import axios from "axios";
 
 function Cards(props){
 
@@ -20,6 +21,13 @@ function organize1 (index){
   setIndex(null)
 }
 
+function deleteBlog (id){
+  axios.delete("http://localhost:3600/blog/"+id).then(({data})=>{
+    console.log(data)
+    alert("blog deleted")
+  })
+
+}
 
   return(
 
@@ -27,7 +35,7 @@ function organize1 (index){
 
     {selected == true ? (props.list.map((e,index)=>{
       return(
-        <div className="container-blog">
+        <div className="container-blog" key={index}>
             <Card key ={index} className="cardBlog" style={{ width: '18rem' }}>
         <Card.Body>
           <Card.Title>{e.title}</Card.Title>
@@ -54,7 +62,8 @@ function organize1 (index){
             written by  <cite title="Source Title">{props.list[index].ownerOfBlog}</cite>
           </footer>
         </blockquote>
-        <button  onClick={()=> organize1(index)}>Click here to see all other blogs of writer</button>
+        <button onClick={()=>{deleteBlog(props.list[index]._id)}}> Delete this blog</button>
+        <button  onClick={()=> organize1()}>Click here to see all other blogs</button>
       </Card.Body>
    </Card>)}
  

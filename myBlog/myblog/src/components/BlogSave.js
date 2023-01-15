@@ -41,6 +41,7 @@ function save (){
     axios.post("http://localhost:3600/blog", {  title:title,  blogText:blog, ownerOfBlog: owner,   
     userId: user._id }).then(({data})=>{
         console.log(data)
+        alert("blog save database")
     })
 }
 

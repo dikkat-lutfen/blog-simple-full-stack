@@ -3,13 +3,18 @@ import { useState,useEffect } from "react";
 //import Card from 'react-bootstrap/Card';
 import "./ShowBlog.css"
 import Cards from "./Cards"
+import { useNavigate } from "react-router-dom";
 
 function ShowBlogs (){
 
     const [list,setList]= useState([]);
     const[user,setUser]=useState("")
-   
+    const navigate = useNavigate();
 
+
+    function goSavePage(){
+        navigate("/blogSave")
+    }
 
     useEffect(()=>{
         if(localStorage.getItem("token")){
@@ -40,13 +45,9 @@ function ShowBlogs (){
 
     return(
         <div>
-           {/* 
-            {list.map ((e,index)=>{
-                return(   <Card list={list} user={user}  )
-            })} */}
-
+         
             <Cards list={list} user={user}/>
-                    
+            <button onClick={()=>{goSavePage()}}> Save new blog</button>    
         </div>
     )
 }
